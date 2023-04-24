@@ -18,11 +18,17 @@ public class Ventana extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500,500);
 		setLocation(350,350);
-		setTitle("Trabajo Practico Nº4");
+		setTitle("Trabajo Practico NÂº4");
 		setLayout(null);
 		
 		// BOTON 1
 		boton1 = new JButton();
+		boton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ejercicio1 v = new Ejercicio1();
+				v.setVisible(true);
+			}
+		});
 		boton1.setText("Ejercicio 1");
 		boton1.setBounds(20,25,140,30);
 		getContentPane().add(boton1);
@@ -31,12 +37,24 @@ public class Ventana extends JFrame{
 		
 		// BOTON 2
 		boton2 = new JButton();
+		boton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ejercicio2 v = new Ejercicio2();
+				v.setVisible(true);
+			}
+		});
 		boton2.setText("Ejercicio 2");
 		boton2.setBounds(20,75,140,30);
 		getContentPane().add(boton2);
 		
 		// BOTON 3
 		boton3 = new JButton();
+		boton3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Ejercicio3 v = new Ejercicio3();
+				v.setVisible(true);
+			}
+		});
 		boton3.setText("Ejercicio 3");
 		boton3.setBounds(20,125,140,30);
 		getContentPane().add(boton3);
