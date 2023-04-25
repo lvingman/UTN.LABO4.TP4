@@ -65,7 +65,7 @@ public class Ventana extends JFrame {
 	
 	public void cambiarVisibilidad(boolean estado)
 	{
-		setVisible(true);
+		setVisible(estado); //cambio true por estado, no lo habia cambiado
 	}
 
 }
