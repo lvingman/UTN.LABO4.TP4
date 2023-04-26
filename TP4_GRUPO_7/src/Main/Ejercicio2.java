@@ -59,16 +59,31 @@ public class Ejercicio2 extends JFrame  {
 							// textField Nota 1
 							tfNota_1 = new JTextField();
 							tfNota_1.addKeyListener(new KeyAdapter() {
+								
 								@Override
 								public void keyTyped(KeyEvent e) 
 								{
+									
 									int key = e.getKeyChar();
-									boolean numeros = (key >= 48) &&(key <= 57);
+									boolean numeros = (key >= 48) && (key <= 57) || (key == 46);
 									if(!numeros)
 									{
 										e.consume();
 									}
-									if(tfNota_1.getText().trim().length() == 10)
+									
+									if((Float.parseFloat(tfNota_1.getText() + (char)key)) > 10) {
+										e.consume();
+									}
+									
+									if(tfNota_1.getText().contains(".") && (key == 46)) {
+										e.consume();
+									}
+									
+									if(tfNota_1.getText().contains("10") && (key == 46)) {
+										e.consume();
+									}	
+									
+									if(tfNota_1.getText().trim().length() == 3)
 									{
 										e.consume();
 									}
@@ -85,13 +100,27 @@ public class Ejercicio2 extends JFrame  {
 								@Override
 								public void keyTyped(KeyEvent e) 
 								{
+									
 									int key = e.getKeyChar();
-									boolean numeros = (key >= 48) &&(key <= 57);
+									boolean numeros = (key >= 48) && (key <= 57) || (key == 46);
 									if(!numeros)
 									{
 										e.consume();
 									}
-									if(tfNota_2.getText().trim().length() == 10)
+									
+									if((Float.parseFloat(tfNota_2.getText() + (char)key)) > 10) {
+										e.consume();
+									}
+									
+									if(tfNota_2.getText().contains(".") && (key == 46)) {
+										e.consume();
+									}
+									
+									if(tfNota_2.getText().contains("10") && (key == 46)) {
+										e.consume();
+									}	
+									
+									if(tfNota_2.getText().trim().length() == 3)
 									{
 										e.consume();
 									}
@@ -107,13 +136,27 @@ public class Ejercicio2 extends JFrame  {
 								@Override
 								public void keyTyped(KeyEvent e) 
 								{
+									
 									int key = e.getKeyChar();
-									boolean numeros = (key >= 48) &&(key <= 57);
+									boolean numeros = (key >= 48) && (key <= 57) || (key == 46);
 									if(!numeros)
 									{
 										e.consume();
 									}
-									if(tfNota_3.getText().trim().length() == 10)
+									
+									if((Float.parseFloat(tfNota_3.getText() + (char)key)) > 10) {
+										e.consume();
+									}
+									
+									if(tfNota_3.getText().contains(".") && (key == 46)) {
+										e.consume();
+									}
+									
+									if(tfNota_3.getText().contains("10") && (key == 46)) {
+										e.consume();
+									}	
+									
+									if(tfNota_3.getText().trim().length() == 3)
 									{
 										e.consume();
 									}
