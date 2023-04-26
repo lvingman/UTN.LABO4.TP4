@@ -61,6 +61,22 @@ public class Ejercicio1 extends JFrame {
 		contentPane.add(tfApellido);
 		
 		tfTelefono = new JTextField();
+		tfTelefono.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) 
+			{
+				int key = e.getKeyChar();
+				boolean numeros = (key >= 48) &&(key <= 57);
+				if(!numeros)
+				{
+					e.consume();
+				}
+				if(tfTelefono.getText().trim().length() == 10)
+				{
+					e.consume();
+				}
+			}
+		});
 		tfTelefono.setColumns(10);
 		tfTelefono.setBounds(141, 131, 201, 20);
 		contentPane.add(tfTelefono);
@@ -90,19 +106,24 @@ public class Ejercicio1 extends JFrame {
 		
 		btnMostrar.addActionListener(e ->{
 			
-			String nombre = tfNombre.getText();
-			String apellido = tfApellido.getText();
-			String telefono = tfTelefono.getText();
-			String fecha = tfFechaNac.getText();
+			String nombre = tfNombre.getText().trim();
+			String apellido = tfApellido.getText().trim();
+			String telefono = tfTelefono.getText().trim();
+			String fecha = tfFechaNac.getText().trim();
 
+			lblMostrar.setText("");
 			if(verificaCampos(nombre, apellido, telefono, fecha))
 			{
-				String resultado = nombre + " " + apellido + " " + telefono + " " + fecha;
+				String resultado = nombre.trim().toUpperCase() + " " + apellido.trim().toUpperCase() + " " + telefono.trim() + " " + fecha.trim();
 				lblLosDatosIngresadosFueron.setText(resultado);
+				tfNombre.setBackground(Color.white);
+				tfApellido.setBackground(Color.white);
+				tfTelefono.setBackground(Color.white);
+				tfFechaNac.setBackground(Color.white);
 				limpiarTextFields();
 			}
-			
-			
+			else lblMostrar.setText("FALTAN COMPLETAR DATOS");
+	
 		});
 		
 		
