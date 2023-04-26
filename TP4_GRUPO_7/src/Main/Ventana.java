@@ -56,7 +56,7 @@ public class Ventana extends JFrame {
 		
 		btnEjercicio2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ejercicio_2 v = new ejercicio_2();
+				Ejercicio2 v = new Ejercicio2();
 				v.setVisible(true);
 			}
 		});
@@ -64,7 +64,7 @@ public class Ventana extends JFrame {
 		btnEjercicio3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Ejercicio3 v = new Ejercicio3();
-				v.setVisible(true);
+				//v.setVisible(true);
 			}
 		});
 		

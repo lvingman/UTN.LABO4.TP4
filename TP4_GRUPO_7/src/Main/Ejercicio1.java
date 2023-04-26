@@ -160,25 +160,26 @@ public class Ejercicio1 extends JFrame {
 		{
 			tfNombre.setBackground(Color.red);
 			empty = true;
-		}
+		} else {tfNombre.setBackground(Color.white);}
+		
+		
 		if(apellido.equals("")) 
 		{
 			tfApellido.setBackground(Color.red);
 			empty = true;
-
-		}
+		} else {tfApellido.setBackground(Color.white);}
+		
 		if(telefono.equals("")) 
 		{
 			tfTelefono.setBackground(Color.red);
 			empty = true;
-
-		}
+		} else {tfTelefono.setBackground(Color.white);}
+		
 		if(fecha.equals("")) 
 		{
 			tfFechaNac.setBackground(Color.red);
 		    empty = true;
-
-		}
+		} else {tfFechaNac.setBackground(Color.white);}
 		
 		if(!empty)
 		{

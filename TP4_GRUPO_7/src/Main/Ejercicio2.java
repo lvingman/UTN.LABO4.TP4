@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 
 
 
-public class ejercicio_2 extends JFrame  {
+public class Ejercicio2 extends JFrame  {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +23,7 @@ public class ejercicio_2 extends JFrame  {
 	private JTextField tfNota_3;
 	private JComboBox<String> cbTPS;
 
-	public ejercicio_2() {
+	public Ejercicio2() {
 		
 		//configuracion ventana
 		setTitle("Promedio");
