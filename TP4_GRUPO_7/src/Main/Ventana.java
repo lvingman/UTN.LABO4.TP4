@@ -35,7 +35,7 @@ public class Ventana extends JFrame {
 		btnEjercicio2= new JButton("EJERCICIO 2");
 		btnEjercicio3 = new JButton("EJERCICIO 3");
 		
-		//Configurar el panel de botones
+		//Agregar y configurar los botones en el panel
 		contentPane.add(btnEjercicio1);
 		contentPane.add(btnEjercicio2);
 		contentPane.add(btnEjercicio3);
@@ -56,14 +56,14 @@ public class Ventana extends JFrame {
 		
 		btnEjercicio2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Ejercicio2 v = new Ejercicio2();
+				ejercicio_2 v = new ejercicio_2();
 				v.setVisible(true);
 			}
 		});
 		
 		btnEjercicio3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Ejercicio3 v = new Ejercicio3();
+				//Ejercicio3 v = new Ejercicio3();
 				v.setVisible(true);
 			}
 		});
