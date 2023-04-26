@@ -22,6 +22,7 @@ public class Ejercicio1 extends JFrame {
 	private JTextField tfTelefono;
 	private JTextField tfFechaNac;
 	private JLabel lblLosDatosIngresados;
+	private JLabel lblLosDatosIngresadosFueron;
 	private JLabel lblMostrar;
 	
 	public Ejercicio1() {
@@ -77,9 +78,32 @@ public class Ejercicio1 extends JFrame {
 		lblLosDatosIngresados.setBounds(10, 277, 172, 14);
 		contentPane.add(lblLosDatosIngresados);
 		
+		lblLosDatosIngresadosFueron = new JLabel();
+		lblLosDatosIngresadosFueron.setBounds(10, 300, 400, 14);
+		contentPane.add(lblLosDatosIngresadosFueron);
+		
 		lblMostrar = new JLabel("");
 		lblMostrar.setBounds(10, 316, 332, 14);
 		contentPane.add(lblMostrar);
+		
+		//Se completa Label con los datos ingresados
+		
+		btnMostrar.addActionListener(e ->{
+			
+			String nombre = tfNombre.getText();
+			String apellido = tfApellido.getText();
+			String telefono = tfTelefono.getText();
+			String fecha = tfFechaNac.getText();
+
+			if(verificaCampos(nombre, apellido, telefono, fecha))
+			{
+				String resultado = nombre + " " + apellido + " " + telefono + " " + fecha;
+				lblLosDatosIngresadosFueron.setText(resultado);
+				limpiarTextFields();
+			}
+			
+			
+		});
 		
 		
 	}
@@ -87,5 +111,51 @@ public class Ejercicio1 extends JFrame {
 	{
 		setVisible(true);
 	}
+	//, String apellido, String telefono, String fecha
+	private boolean verificaCampos(String nombre, String apellido, String telefono, String fecha) 
+	{
+		boolean empty = false;
+		
+		if(nombre.equals(""))
+		{
+			tfNombre.setBackground(Color.red);
+			empty = true;
+		}
+		if(apellido.equals("")) 
+		{
+			tfApellido.setBackground(Color.red);
+			empty = true;
+
+		}
+		if(telefono.equals("")) 
+		{
+			tfTelefono.setBackground(Color.red);
+			empty = true;
+
+		}
+		if(fecha.equals("")) 
+		{
+			tfFechaNac.setBackground(Color.red);
+		    empty = true;
+
+		}
+		
+		if(!empty)
+		{
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 	
+	private void limpiarTextFields() 
+	{
+		tfNombre.setText("");
+		tfApellido.setText("");
+		tfTelefono.setText("");
+		tfFechaNac.setText("");
+
+		
+	}
 }
