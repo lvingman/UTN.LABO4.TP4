@@ -26,14 +26,20 @@ public class Ejercicio1 extends JFrame {
 	private JLabel lblMostrar;
 	
 	public Ejercicio1() {
+		
+		//configuracion ventana
 		setTitle("Contactos");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(600, 100, 380, 400);
+		
+		//creacion panel
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		// Crea labels y los agrega al panel
 		JLabel lblNombre = new JLabel("NOMBRE");
 		lblNombre.setBounds(41, 58, 65, 14);
 		contentPane.add(lblNombre);
@@ -50,6 +56,8 @@ public class Ejercicio1 extends JFrame {
 		lblFechaNac.setBounds(41, 180, 78, 14);
 		contentPane.add(lblFechaNac);
 		
+		
+		//crea textFields y los agrega al apanel 
 		tfNombre = new JTextField();
 		tfNombre.setBounds(141, 55, 201, 20);
 		contentPane.add(tfNombre);
@@ -86,10 +94,14 @@ public class Ejercicio1 extends JFrame {
 		contentPane.add(tfFechaNac);
 		tfFechaNac.setColumns(10);
 		
+		
+		// crea y agrega boton mostrar al panel
 		JButton btnMostrar = new JButton("MOSTRAR");
 		btnMostrar.setBounds(238, 218, 104, 38);
 		contentPane.add(btnMostrar);
 		
+		
+		// crea y agrega label de datos ingresados al panel
 		lblLosDatosIngresados = new JLabel("Los datos ingresados fueron:");
 		lblLosDatosIngresados.setBounds(10, 277, 172, 14);
 		contentPane.add(lblLosDatosIngresados);
@@ -98,6 +110,8 @@ public class Ejercicio1 extends JFrame {
 		lblLosDatosIngresadosFueron.setBounds(10, 300, 400, 14);
 		contentPane.add(lblLosDatosIngresadosFueron);
 		
+		
+		// crea y agrega label mostrar al panel
 		lblMostrar = new JLabel("");
 		lblMostrar.setBounds(10, 316, 332, 14);
 		contentPane.add(lblMostrar);
@@ -128,10 +142,15 @@ public class Ejercicio1 extends JFrame {
 		
 		
 	}
+	
+	
+	
 	public void cambiarVisibilidad(boolean estado)
 	{
-		setVisible(true);
+		setVisible(estado);
 	}
+	
+	
 	//, String apellido, String telefono, String fecha
 	private boolean verificaCampos(String nombre, String apellido, String telefono, String fecha) 
 	{
