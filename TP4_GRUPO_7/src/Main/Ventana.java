@@ -13,49 +13,62 @@ public class Ventana extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton btnEjercicio;
-	private JButton btnEjercicio_1;
-	private JButton btnEjercicio_2;
+	private JButton btnEjercicio1;
+	private JButton btnEjercicio2;
+	private JButton btnEjercicio3;
 	private JLabel lblNewLabel;
 
 	public Ventana() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		//Configuracion de la ventana principal
 		setTitle("Trabajo Practico N°4");
+		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Configurar el panel de los botones
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		btnEjercicio = new JButton("EJERCICIO 1");
-		btnEjercicio.addActionListener(new ActionListener() {
+		//Crear los botones
+		btnEjercicio1 = new JButton("EJERCICIO 1");
+		btnEjercicio2= new JButton("EJERCICIO 2");
+		btnEjercicio3 = new JButton("EJERCICIO 3");
+		
+		//Configurar el panel de botones
+		contentPane.add(btnEjercicio1);
+		contentPane.add(btnEjercicio2);
+		contentPane.add(btnEjercicio3);
+		
+		btnEjercicio1.setBounds(163, 82, 108, 33);
+		btnEjercicio2.setBounds(163, 131, 108, 33);
+		btnEjercicio3.setBounds(163, 184, 108, 33);
+		
+		//Agregar acciones a los botones
+		
+		btnEjercicio1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ejercicio1 v = new Ejercicio1();
 				v.setVisible(true);
 			}
 		});
-		btnEjercicio.setBounds(163, 82, 108, 33);
-		contentPane.add(btnEjercicio);
 		
-		btnEjercicio_1 = new JButton("EJERCICIO 2");
-		btnEjercicio_1.addActionListener(new ActionListener() {
+		
+		btnEjercicio2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ejercicio2 v = new Ejercicio2();
 				v.setVisible(true);
 			}
 		});
-		btnEjercicio_1.setBounds(163, 131, 108, 33);
-		contentPane.add(btnEjercicio_1);
 		
-		btnEjercicio_2 = new JButton("EJERCICIO 3");
-		btnEjercicio_2.addActionListener(new ActionListener() {
+		btnEjercicio3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Ejercicio3 v = new Ejercicio3();
 				v.setVisible(true);
 			}
 		});
-		btnEjercicio_2.setBounds(163, 184, 108, 33);
-		contentPane.add(btnEjercicio_2);
+		
+		//Configurar Label
 		
 		lblNewLabel = new JLabel("GRUPO NRO: 7");
 		lblNewLabel.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
