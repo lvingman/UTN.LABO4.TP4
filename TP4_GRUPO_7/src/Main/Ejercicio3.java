@@ -2,16 +2,14 @@ package Main;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
-import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,13 +21,12 @@ public class Ejercicio3 extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane, panel1, panel2;
 	private JTextField textField;
-
-	private JRadioButton rbtWindows;
-	private JRadioButton rbtMac;
-	private JRadioButton rbtLinux;
-	
+	private JLabel lblPanel1, lblEspecialidad, lblHoras;
+	private JRadioButton rbtWindows, rbtMac, rbtLinux;
+	private JCheckBox cbxProgramacion, cbxAdministracion, cbxDisenoGrafico;
 	private ButtonGroup grupoSistemasOp;
-
+	private JButton btnAceptar;
+	JFrame jFrame =new JFrame();
 	
 
 	//CONF VENTANTA
@@ -51,7 +48,7 @@ public class Ejercicio3 extends JFrame{
 		
 		// creo panel
 		panel1 = new JPanel();
-		panel1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel1.setBounds(10, 11, 398, 66);
 		getContentPane().add(panel1);
 		panel1.setLayout(null);
@@ -62,49 +59,53 @@ public class Ejercicio3 extends JFrame{
 		
 		// crea Radio buttons
 		rbtWindows = new JRadioButton("Windows");
+		rbtWindows.setSelected(true);
+		rbtWindows.setActionCommand("Windows"); //agrego ActionCommand
 		rbtWindows.setBounds(176, 22, 84, 23);
 		panel1.add(rbtWindows);
 		
 		rbtMac = new JRadioButton("Mac");
+		rbtMac.setActionCommand("Mac"); //agrego ActionCommand
 		rbtMac.setBounds(262, 22, 62, 23);
 		panel1.add(rbtMac);
 		
 		rbtLinux = new JRadioButton("Linux");
+		rbtLinux.setActionCommand("Linux"); //agrego ActionCommand
 		rbtLinux.setBounds(326, 22, 66, 23);
 		panel1.add(rbtLinux);
-		
+			
 		// agrego botones al grupo 
 		grupoSistemasOp.add(rbtWindows);
 		grupoSistemasOp.add(rbtMac);
 		grupoSistemasOp.add(rbtLinux);
 		
-		JLabel lblPanel1 = new JLabel("Elije un sistema operativo");
+		lblPanel1 = new JLabel("Elije un sistema operativo");
 		lblPanel1.setBounds(10, 26, 160, 14);
 		panel1.add(lblPanel1);
 		
-		JPanel pnlPanel2 = new JPanel();
-		pnlPanel2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		pnlPanel2.setBounds(10, 88, 398, 125);
-		contentPane.add(pnlPanel2);
-		pnlPanel2.setLayout(null);
+		panel2 = new JPanel();
+		panel2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel2.setBounds(10, 88, 398, 125);
+		contentPane.add(panel2);
+		panel2.setLayout(null);
 		
-		JLabel lblEspecialidad = new JLabel("Elije una especialidad");
+		lblEspecialidad = new JLabel("Elije una especialidad");
 		lblEspecialidad.setBounds(10, 45, 122, 14);
-		pnlPanel2.add(lblEspecialidad);
+		panel2.add(lblEspecialidad);
 		
-		JCheckBox cbxProgramacion = new JCheckBox("Programacion");
+		cbxProgramacion = new JCheckBox("Programacion");
 		cbxProgramacion.setBounds(164, 7, 116, 23);
-		pnlPanel2.add(cbxProgramacion);
+		panel2.add(cbxProgramacion);
 		
-		JCheckBox cbxAdministracion = new JCheckBox("Administracion");
+		cbxAdministracion = new JCheckBox("Administracion");
 		cbxAdministracion.setBounds(164, 41, 116, 23);
-		pnlPanel2.add(cbxAdministracion);
+		panel2.add(cbxAdministracion);
 		
-		JCheckBox cbxDisenoGrafico = new JCheckBox("Dise\u00F1o Grafico");
+		cbxDisenoGrafico = new JCheckBox("Dise\u00F1o Grafico");
 		cbxDisenoGrafico.setBounds(164, 80, 116, 23);
-		pnlPanel2.add(cbxDisenoGrafico);
+		panel2.add(cbxDisenoGrafico);
 		
-		JLabel lblHoras = new JLabel("Cantidad de Horas en el Computador:");
+		lblHoras = new JLabel("Cantidad de Horas en el Computador:");
 		lblHoras.setBounds(34, 224, 236, 17);
 		contentPane.add(lblHoras);
 		
@@ -113,12 +114,34 @@ public class Ejercicio3 extends JFrame{
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				String prog, adm, dis;
 				
-				
-				JOptionPane.showMessageDialog(null,"");
+				if(cbxProgramacion.isSelected()) {
+					prog =  cbxProgramacion.getText() + " - ";
+				}
+				else { prog = "";}
+				if(cbxAdministracion.isSelected()) {
+					adm =  cbxAdministracion.getText() + " - ";
+				}
+				else {adm = "";}
+				if(cbxDisenoGrafico.isSelected()) {
+					dis =  cbxDisenoGrafico.getText() + " - ";
+				}
+				else {dis = "";}
+				if(textField.getText().isEmpty()) {
+					textField.setText("0"); 
+				}
+							
+				String Grupo = grupoSistemasOp.getSelection().getActionCommand(); 
+				JOptionPane.showMessageDialog(jFrame, Grupo + " - " + prog + adm + dis + textField.getText() + " Hs");
+				textField.setText("");
+				cbxProgramacion.setSelected(false);
+				cbxAdministracion.setSelected(false);
+				cbxDisenoGrafico.setSelected(false);
 			}
 		});
 		
