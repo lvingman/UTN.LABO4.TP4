@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -208,10 +209,12 @@ public class Ejercicio2 extends JFrame {
 		tfPromedio.setBounds(83, 32, 131, 20);
 		panel2.add(tfPromedio);
 		tfPromedio.setColumns(10);
+		tfPromedio.setEditable(false);
 		
 		tfCondicion = new JTextField();
 		tfCondicion.setColumns(10);
 		tfCondicion.setBounds(83, 57, 131, 20);
+		tfCondicion.setEditable(false);
 		panel2.add(tfCondicion);
 		
 		btnCalcular = new JButton("CALCULAR");
@@ -220,16 +223,45 @@ public class Ejercicio2 extends JFrame {
 		//ActionListener COMENTADO
 		//btnCalcular.addActionListener(new eventoBotonCalcular(tfNota_1,tfNota_2,tfNota_3,tfPromedio,tfCondicion,lblaux)); //falta desarrollar el evento, no lo agrego para que los demás tengan que desarrollar
 		
+		
+		//Accion del boton calcular
+		
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String n1 = tfNota_1.getText();
+				String n2 = tfNota_2.getText();
+				String n3 = tfNota_3.getText();
+				int item = cbTPS.getSelectedIndex();
+				
+
+				if(verificaCamposCompletos(n1, n2, n3, item)) 
+				{
+					float nota1 = Float.parseFloat(n1);
+					float nota2 = Float.parseFloat(n2);
+					float nota3 = Float.parseFloat(n3);
+					
+					verificarCondiciones(nota1, nota2, nota3);
+				}
+				
+				
+			}
+		});
+		
 		btnNuevo = new JButton("NUEVO");
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				 tfNota_1.setText(null);
+				 tfNota_1.setBackground(Color.white);
 				 tfNota_2.setText(null);
+				 tfNota_2.setBackground(Color.white);
 			     tfNota_3.setText(null);
+				 tfNota_3.setBackground(Color.white);
 				 tfPromedio.setText(null);
 				 tfCondicion.setText(null);
 				 cbTPS.setSelectedIndex(0);
+				 cbTPS.setBackground(Color.white);
+	
 			}
 		});
 		btnNuevo.setBounds(259, 158, 111, 33);
@@ -247,4 +279,74 @@ public class Ejercicio2 extends JFrame {
 		 
 	}
 	
+	private void verificarCondiciones(float nota1, float nota2, float nota3) 
+	{
+		float promedioAux = (nota1 + nota2 + nota3) / 3; 
+		
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
+		
+		String promedio = df.format(promedioAux);
+		
+		
+		int itemTP = cbTPS.getSelectedIndex();
+		
+		
+		if(itemTP == 1) {
+
+			if(nota1 < 6 || nota2 < 6 || nota3 < 6) {
+				tfCondicion.setText("LIBRE");
+			}
+			if(nota1 >= 8 && nota2 >= 8 && nota3 >= 8) {
+				tfCondicion.setText("PROMOCIONADO");
+			}
+			if((nota1 >=6 && nota1<8) || (nota2 >=6 && nota2<8) || (nota3 >=6 && nota3 <8) ) {
+				tfCondicion.setText("REGULAR");
+
+			}
+			
+			cbTPS.setBackground(Color.WHITE);
+			tfPromedio.setText(promedio);
+
+		}
+		if(itemTP==2) {
+			tfPromedio.setText(promedio);
+			cbTPS.setBackground(Color.WHITE);
+
+			tfCondicion.setText("LIBRE");
+		}
+	
+	
+	}
+	
+	private boolean verificaCamposCompletos(String n1, String n2, String n3, int item) 
+	{
+		
+		if(n1.isEmpty() || n2.isEmpty() || n3.isEmpty() || item == 0) 
+		{
+			if(n1.isEmpty()) {
+				tfNota_1.setBackground(Color.red);
+			}
+			else {
+					tfNota_1.setBackground(Color.WHITE);
+				}
+			if(n2.isEmpty()) {
+				tfNota_2.setBackground(Color.red);
+			}else {
+				tfNota_2.setBackground(Color.WHITE);
+			}if(n3.isEmpty()) {
+				tfNota_3.setBackground(Color.red);
+			}else {
+				tfNota_3.setBackground(Color.WHITE);
+			}if(item == 0) {
+				cbTPS.setBackground(Color.red);
+			}else {
+				cbTPS.setBackground(Color.WHITE);
+			}
+			return false;			
+	}else {
+		return true;
+	}
+	}
 }
+
